@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三山火锅店 - 大学城最受欢迎火锅店</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap">
+    <style>
+        :root {
+            --primary-red: #d9534f;
+            --secondary-red: #c9302c;
+            --accent-gold: #d4af37;
+            --light-bg: #fff9f5;
+            --dark-text: #5a3921;
+            --white: #ffffff;
+            --border-color: #e8d6c9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary-red);
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        .main-header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            color: var(--primary-red);
+            font-size: 2.8rem;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .chinese-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            line-height: 1;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .logo-text .english-name {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+        
+        /* 导航菜单 */
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 10px 18px;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 1.05rem;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(217, 83, 79, 0.1);
+            color: var(--primary-red);
+        }
+        
+        .nav-link.active {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('images/hotpot/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-red);
+            cursor: pointer;
+        }
+        
+        .hero-btn:hover {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* 主要内容区 */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* 特色菜品 - 修改为img标签 */
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .dish-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+        
+        .dish-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* 修改为img样式 */
+        .dish-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover; /* 保持图片比例并覆盖容器 */
+            display: block;
+            border-bottom: 3px solid var(--primary-red);
+            transition: transform 0.5s;
+        }
+        
+        .dish-card:hover .dish-img {
+            transform: scale(1.05);
+        }
+        
+        .dish-content {
+            padding: 25px;
+        }
+        
+        .dish-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-red);
+        }
+        
+        .dish-price {
+            color: var(--secondary-red);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        /* 关于我们 - 修改为img标签 */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-img-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-img-container:hover .about-img {
+            transform: scale(1.05);
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* 评论板块 */
+        .reviews-section {
+            background-color: rgba(217, 83, 79, 0.05);
+            border-radius: 15px;
+            padding: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-height: 800px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+        
+        .reviews-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .reviews-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .reviews-grid::-webkit-scrollbar-thumb {
+            background: var(--primary-red);
+            border-radius: 10px;
+        }
+        
+        .review-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+        }
+        
+        .review-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .review-date {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        
+        .review-rating {
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .review-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .review-images {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .review-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+        
+        .watermark {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            font-family: 'Noto Serif SC', serif;
+            z-index: 2;
+        }
+        
+        /* 优惠活动 */
+        .promotion-section {
+            background-color: rgba(217, 83, 79, 0.1);
+            border-radius: 15px;
+            padding: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .promotion-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .promotion-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .promotion-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        /* 联系方式 */
+        .contact-section {
+            margin-bottom: 60px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        /* 底部 */
+        .main-footer {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            .main-nav {
+                margin-top: 15px;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img-container {
+                height: 300px;
+            }
+            
+            .reviews-section {
+                padding: 30px 20px;
+            }
+            
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                max-height: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .dishes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promotion-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="chinese-name">三山火锅店</div>
+                    <div class="english-name">SANSHAN HOT POT</div>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link active">首页</a></li>
+                    <li class="nav-item"><a href="#menu" class="nav-link">特色菜品</a></li>
+                    <li class="nav-item"><a href="#reviews" class="nav-link">顾客评价</a></li>
+                    <li class="nav-item"><a href="#promotion" class="nav-link">优惠活动</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>三山火锅 · 一锅煮尽天下鲜</h1>
+            <p>大学城最受欢迎的火锅店，始于2015年。精选新鲜食材，独特三味锅底，为您带来最地道的火锅体验。</p>
+            <button class="hero-btn" id="reservationBtn">
+                <i class="fas fa-calendar-check"></i> 立即预订
+            </button>
+        </div>
+    </section>
+    
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 特色菜品 -->
+            <section id="menu" class="menu-section">
+                <div class="section-header">
+                    <h2 class="section-title">特色菜品推荐</h2>
+                    <p>每一道菜都是精心制作，只为给您最好的味觉体验</p>
+                </div>
+                
+                <div class="dishes-grid">
+                    <div class="dish-card">
+                        <!-- 菜品1：招牌三味锅 -->
+                        <img src="images/hotpot/dish1.jpg" alt="招牌三味锅" class="dish-img">
+                        <div class="dish-content">
+                            <h3>招牌三味锅</h3>
+                            <p>独创的三味锅底：麻辣红汤、养生菌汤、番茄浓汤，满足不同口味需求。</p>
+                            <div class="dish-price">¥68</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card">
+                        <!-- 菜品2：金牌毛肚 -->
+                        <img src="images/hotpot/dish2.jpg" alt="金牌毛肚" class="dish-img">
+                        <div class="dish-content">
+                            <h3>金牌毛肚</h3>
+                            <p>精选优质毛肚，七上八下涮煮，口感爽脆，鲜香可口。</p>
+                            <div class="dish-price">¥58</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dish-card">
+                        <!-- 菜品3：三山牛肉拼盘 -->
+                        <img src="images/hotpot/dish3.jpg" alt="三山牛肉拼盘" class="dish-img">
+                        <div class="dish-content">
+                            <h3>三山牛肉拼盘</h3>
+                            <p>三种不同部位的优质牛肉，摆盘精美，肉质鲜嫩。</p>
+                            <div class="dish-price">¥98</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 关于我们 -->
+            <section class="about-section">
+                <div class="about-img-container">
+                    <!-- 关于我们图片 -->
+                    <img src="images/hotpot/about-us.jpg" alt="关于三山火锅店" class="about-img">
+                </div>
+                <div class="about-content">
+                    <h2>关于三山火锅店</h2>
+                    <p>三山火锅店创立于2015年，位于枫山大学城美食街23号。创始人张师傅深耕火锅行业二十余年，致力于将传统火锅文化与现代美食理念相结合。</p>
+                    <p>我们坚持使用每日新鲜采购的食材，汤底采用二十余种天然香料和药材精心熬制，不添加任何味精和防腐剂。为大学生提供健康、美味、实惠的火锅体验是我们的宗旨。</p>
+                    <p>店内环境温馨舒适，设有多个包间，适合朋友聚餐、班级活动、生日庆祝等各种场合。凭学生证可享受专属优惠。</p>
+                </div>
+            </section>
+            
+            <!-- 评论板块 -->
+            <section id="reviews" class="reviews-section">
+                <div class="reviews-header">
+                    <h2 class="section-title">顾客评价</h2>
+                    <p>听听大家怎么说（共25条评价）</p>
+                </div>
+                
+                <div class="reviews-grid" id="reviewsGrid">
+                    <!-- 评论将通过JavaScript动态生成 -->
+                </div>
+            </section>
+            
+            <!-- 优惠活动 -->
+            <section id="promotion" class="promotion-section">
+                <div class="section-header">
+                    <h2 class="section-title">专属优惠</h2>
+                    <p>为枫山大学师生准备的特别福利</p>
+                </div>
+                
+                <div class="promotion-cards">
+                    <div class="promotion-card">
+                        <div class="promotion-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>学生专享</h3>
+                        <p>凭枫山大学学生证<br>全单享9折优惠</p>
+                    </div>
+                    
+                    <div class="promotion-card">
+                        <div class="promotion-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h3>生日特权</h3>
+                        <p>生日当天凭身份证<br>免费获赠招牌肥牛卷一份</p>
+                    </div>
+                    
+                    <div class="promotion-card">
+                        <div class="promotion-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>团体优惠</h3>
+                        <p>8人以上团体用餐<br>享8.5折优惠，赠果盘</p>
+                    </div>
+                    
+                    <div class="promotion-card">
+                        <div class="promotion-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <h3>工作日特惠</h3>
+                        <p>周一至周四午餐时段<br>套餐享7.8折优惠</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 联系方式 -->
+            <section id="contact" class="contact-section">
+                <div class="section-header">
+                    <h2 class="section-title">联系我们</h2>
+                    <p>期待您的光临</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>地址</h3>
+                        <p>枫山大学城美食街23号<br>(枫山大学南门对面)</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>电话</h3>
+                        <p>(0123) 456-1111<br>预订热线: (0123) 456-1112</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>营业时间</h3>
+                        <p>周一至周日<br>11:00 - 23:00<br>(最后点餐时间 22:00)</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- 底部 -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>三山火锅店</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">大学城最受欢迎的火锅店，为学生提供健康美味的火锅体验。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="微信"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link" title="微博"><i class="fab fa-weibo"></i></a>
+                        <a href="#" class="social-link" title="抖音"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link" title="大众点评"><i class="fas fa-star"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#menu">特色菜品</a></li>
+                        <li><a href="#reviews">顾客评价</a></li>
+                        <li><a href="#promotion">优惠活动</a></li>
+                        <li><a href="#contact">联系方式</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>店铺信息</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">加盟合作</a></li>
+                        <li><a href="#">招聘信息</a></li>
+                        <li><a href="#">食材溯源</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>版权所有 © 2015-2026 三山火锅店 | 地址：枫山大学城美食街23号</p>
+                <p>营业执照 | 食品经营许可证 | 卫生许可证</p>
+                <p>客服电话：(0123) 456-1111 | 投诉建议：(0123) 456-1113</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 评论数据 - 从2026年到2020年倒序排列
+        const reviews = [
+            {
+                name: '谢雨',
+                date: '2026年9月30日',
+                rating: 5,
+                content: '又是一年新生入学季，带2026级新生来聚餐。看到他们就像看到了当年的自己。三山火锅店见证了我们的青春！'
+            },
+            {
+                name: '姜文',
+                date: '2026年8月20日',
+                rating: 4,
+                content: '暑假社会实践结束，团队聚餐。大家都吃得很开心，食材新鲜，味道正宗。就是包间有点小。'
+            },
+            {
+                name: '陶然',
+                date: '2026年6月10日',
+                rating: 5,
+                content: '论文答辩通过，和导师同学一起来庆祝。导师对这里的养生锅底赞不绝口，说很适合学术讨论后的放松。'
+            },
+            {
+                name: '金鑫',
+                date: '2026年4月15日',
+                rating: 4.5,
+                content: '期中考试后放松一下，和同学来吃火锅。味道很好，服务也很周到。学生证打折很实惠。'
+            },
+            {
+                name: '严华',
+                date: '2026年3月1日',
+                rating: 5,
+                content: '新学期开始，带新生学弟学妹来聚餐。大家都说这是他们在大学城吃过最好吃的火锅，以后会常来。'
+            },
+            {
+                name: '曹敏',
+                date: '2026年1月1日',
+                rating: 5,
+                content: '新年第一餐，还是选择三山火锅店。几年了味道一直没变，服务也越来越好。祝新年生意兴隆！'
+            },
+            {
+                name: '孔杰',
+                date: '2025年10月1日',
+                rating: 4.5,
+                content: '国庆假期和外地来的同学聚餐，同学对这里的火锅赞不绝口。食材新鲜，汤底浓郁，服务周到。'
+            },
+            {
+                name: '施娜',
+                date: '2025年8月8日',
+                rating: 5,
+                content: '生日聚餐选在这里，店家送了长寿面和果盘，太惊喜了！同学们都说火锅很好吃，服务也特别好。'
+            },
+            {
+                name: '吕明',
+                date: '2025年5月1日',
+                rating: 4,
+                content: '劳动节和家人一起来聚餐，人多但上菜速度还可以。味道不错，食材新鲜。就是停车有点不方便。'
+            },
+            {
+                name: '何静',
+                date: '2025年2月14日',
+                rating: 5,
+                content: '情人节和男朋友来吃火锅，双人套餐很划算，还送了玫瑰花。服务很贴心，环境也很浪漫。'
+            },
+            {
+                name: '许阳',
+                date: '2024年12月24日',
+                rating: 5,
+                content: '平安夜和同学一起来吃火锅，店里装饰得很温馨，还有圣诞小礼物。火锅味道很好，气氛很棒！'
+            },
+            {
+                name: '秦雪',
+                date: '2024年9月15日',
+                rating: 4,
+                content: '新学期和室友的第一次聚餐，还是选择三山火锅店。味道没变，服务依然很好。希望可以增加一些新菜品。'
+            },
+            {
+                name: '朱勇',
+                date: '2024年6月20日',
+                rating: 5,
+                content: '毕业聚餐选在这里，承载了大学四年的回忆。味道一如既往的好，服务也很贴心。祝三山火锅店生意兴隆！'
+            },
+            {
+                name: '冯艺',
+                date: '2024年3月15日',
+                rating: 4.5,
+                content: '社团招新后的聚餐，新社员们都很喜欢这里。价格对学生很友好，味道也很好。希望继续保持！'
+            },
+            {
+                name: '郑琳',
+                date: '2024年1月1日',
+                rating: 5,
+                content: '元旦和高中同学聚会，大家都说这里的环境和味道很好。跨年夜人很多，但服务依然很到位，没有因为人多而降低服务质量。'
+            },
+            {
+                name: '吴浩',
+                date: '2023年9月10日',
+                rating: 5,
+                content: '教师节请导师吃饭，导师对这里的环境和菜品都很满意。特别是菌汤锅底，导师说很养生。服务也很周到。'
+            },
+            {
+                name: '周婷',
+                date: '2023年8月25日',
+                rating: 4,
+                content: '暑假实习结束和同事一起来聚餐，食材新鲜，味道不错。就是空调有点冷，希望可以调高一点温度。'
+            },
+            {
+                name: '孙磊',
+                date: '2023年5月20日',
+                rating: 5,
+                content: '520和女朋友来约会，选了靠窗的位置，环境很浪漫。双人套餐分量很足，味道也很好。服务员还帮我们拍了合照，服务超赞！'
+            },
+            {
+                name: '陈雨',
+                date: '2023年3月8日',
+                rating: 5,
+                content: '女生节和室友一起来聚餐，店里还给我们准备了小礼物，太贴心了！火锅味道很棒，食材新鲜，环境也很好。'
+            },
+            {
+                name: '刘同学',
+                date: '2023年1月15日',
+                rating: 4.5,
+                content: '寒假留校和同学一起来吃火锅，冬天吃火锅真的太舒服了！番茄锅底特别浓郁，牛肉很新鲜。服务态度很好，还会再来。'
+            },
+            {
+                name: '赵学长',
+                date: '2022年11月3日',
+                rating: 5,
+                content: '已经毕业两年了，回母校看望老师，特意来三山火锅店重温大学时光。味道一点没变，还是那么正宗！看到店里多了好多枫山大学的学生，想起了当年的我们。'
+            },
+            {
+                name: '王老师',
+                date: '2022年10月20日',
+                rating: 4,
+                content: '带研究生团队来聚餐，环境安静舒适，适合讨论工作。食材质量很好，汤底味道醇厚。特别喜欢他们的养生菌汤锅，营养又美味。'
+            },
+            {
+                name: '李华',
+                date: '2022年10月12日',
+                rating: 5,
+                content: '班级聚餐选择了这里，30个人坐了两个包间。店员安排得很周到，上菜速度也很快。锅底味道正宗，食材新鲜，特别是毛肚和鸭血，非常好吃！人均消费在100元左右，性价比很高。'
+            },
+            {
+                name: '张明',
+                date: '2022年10月5日',
+                rating: 4.5,
+                content: '味道很不错，食材新鲜。特别喜欢他们的麻辣锅底，够味！服务态度也很好，就是周末人多需要等位。'
+            },
+            {
+                name: '苏婉',
+                date: '2022年9月30日',
+                rating: 5,
+                content: '今天和五个室友来三山火锅店聚餐，庆祝我们304宿舍成立一个月！这家店真的太棒了，环境温馨，服务态度超级好。我们点了招牌三味锅，番茄锅底特别浓郁，菌汤锅底很鲜美，麻辣锅底也很正宗。手打牛肉丸Q弹有嚼劲，枫叶牛肉拼盘肉质新鲜，蔬菜拼盘分量十足。最惊喜的是，店员知道我们是宿舍聚餐，还送了我们一份红糖糍粑！价格也很合理，6个人人均80元，学生证还打了9折。强烈推荐给枫山大学的同学们！',
+                hasPhoto: true
+            }
+        ];
+        
+        // 生成评论HTML
+        function generateReviews() {
+            const reviewsGrid = document.getElementById('reviewsGrid');
+            let reviewsHTML = '';
+            
+            reviews.forEach((review, index) => {
+                let ratingStars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= review.rating) {
+                        ratingStars += '<i class="fas fa-star"></i>';
+                    } else if (i - 0.5 === review.rating) {
+                        ratingStars += '<i class="fas fa-star-half-alt"></i>';
+                    } else {
+                        ratingStars += '<i class="far fa-star"></i>';
+                    }
+                }
+                
+                let photoHTML = '';
+                if (review.hasPhoto) {
+                    photoHTML = `
+                        <div class="review-images">
+                            <div style="position: relative;">
+                                <img src="images/hotpot/group-photo.jpg" alt="宿舍聚餐照片" class="review-img">
+                                <div class="watermark">@婉婉</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                reviewsHTML += `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                ${review.name.substring(0, 1)}
+                            </div>
+                            <div class="review-info">
+                                <h4>${review.name}</h4>
+                                <div class="review-date">${review.date}</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            ${ratingStars}
+                            <span style="color: var(--dark-text); margin-left: 10px;">${review.rating}</span>
+                        </div>
+                        <div class="review-content">
+                            ${review.content}
+                        </div>
+                        ${photoHTML}
+                    </div>
+                `;
+            });
+            
+            reviewsGrid.innerHTML = reviewsHTML;
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 生成评论
+            generateReviews();
+            
+            // 预订按钮点击事件
+            document.getElementById('reservationBtn').addEventListener('click', function() {
+                const bookingDialog = document.createElement('div');
+                bookingDialog.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: white;
+                    padding: 30px;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    min-width: 350px;
+                    text-align: center;
+                `;
+                
+                bookingDialog.innerHTML = `
+                    <h3 style="color: #d9534f; margin-bottom: 20px;"><i class="fas fa-calendar-check"></i> 预订三山火锅店</h3>
+                    <div style="text-align: left; margin-bottom: 25px;">
+                        <p><strong>地址：</strong>大学城美食街23号</p>
+                        <p><strong>电话：</strong>(0123) 456-1111</p>
+                        <p><strong>营业时间：</strong>11:00-23:00</p>
+                        <p><strong>学生优惠：</strong>凭学生证享9折</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <input type="text" placeholder="姓名" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="text" placeholder="联系电话" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <input type="date" value="2026-09-01" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <select style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option>选择时间</option>
+                            <option>11:00</option>
+                            <option>12:00</option>
+                            <option>17:00</option>
+                            <option>18:00</option>
+                            <option>19:00</option>
+                        </select>
+                        <input type="number" placeholder="人数" min="1" style="padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        <button id="submitBooking" style="background-color: #d9534f; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">提交预订</button>
+                        <button id="cancelBooking" style="background-color: #f8f9fa; color: #333; border: 1px solid #ddd; padding: 12px; border-radius: 4px; cursor: pointer;">取消</button>
+                    </div>
+                `;
+                
+                document.body.appendChild(bookingDialog);
+                
+                const overlay = document.createElement('div');
+                overlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                    z-index: 9999;
+                `;
+                document.body.appendChild(overlay);
+                
+                document.getElementById('submitBooking').addEventListener('click', function() {
+                    alert('预订成功！我们将通过电话与您确认。');
+                    document.body.removeChild(bookingDialog);
+                    document.body.removeChild(overlay);
+                });
+                
+                document.getElementById('cancelBooking').addEventListener('click', function() {
+                    document.body.removeChild(bookingDialog);
+                    document.body.removeChild(overlay);
+                });
+            });
+            
+            // 导航菜单点击
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
